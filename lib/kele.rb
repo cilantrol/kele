@@ -1,9 +1,11 @@
 require 'httparty'
 require 'pp'
 require 'json'
+require './lib/roadmap.rb'
 
   class Kele
     include HTTParty
+    include Roadmap
     base_uri 'https://www.bloc.io/api/v1'
     
     def initialize(email, password)
@@ -46,5 +48,5 @@ require 'json'
   # party = Kele.new('asdf', 'asdf')
   party.tokens
   # p party.get_me
-  mentor_id = 10
-  p party.get_mentor_availability(mentor_id)
+  # mentor_id = 10
+  # p party.get_mentor_availability(mentor_id)
