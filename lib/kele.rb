@@ -30,10 +30,21 @@ require 'json'
       JSON.parse(response.body)
     end
     
+    # get mentor available time slots
+    def get_mentor_availability(mentor_id)
+      response = self.class.get(("/mentors/#{mentor_id}/student_availability"), headers:{
+        authorization: @token
+      })
+      # response.body => parse to JSON
+      JSON.parse(response.body)
+    end
+    
   end
   
   # Usage Example
   # using pp will default in JSON
-  party = Kele.new('asdf', 'asdf')
+  # party = Kele.new('asdf', 'asdf')
   party.tokens
-  p party.get_me
+  # p party.get_me
+  mentor_id = 10
+  p party.get_mentor_availability(mentor_id)
