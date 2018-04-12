@@ -57,23 +57,22 @@ include Secrets
     end
     
     # create messages
-    def create_message(email, receiver_id, token, subject, message)
+    def create_message(email, receiver_id, subject, message)
       response = self.class.post(("/messages"),
-        values:  {
+        body:  {
                       'sender':         email,
                       'recipient_id':   receiver_id,
-                      'token':          token,
                       'subject':        subject,
                       'stripped-text':  message},
                       
         headers: {    authorization:    @token})
     end
-    
+
   end
 
   # Usage Example
   # using pp will default in JSON
-  party = Kele.new($user_email, $user_password)
-  party.tokens
-  p party.get_messages
-  # p party.create_message('gaowhui@gmail.com', 2, 'token?', 'asdasdfasdf', 'body of message')
+  # party = Kele.new($user_email, $user_password)
+  # party.tokens
+  # p party.get_messages
+ 
